@@ -2,184 +2,170 @@
 @section('title')
 Admin Profile
 @endsection
+
 @section('content')
-				<div class="container-fluid p-0">
+<div class="container-fluid p-0">
 
-					<div class="mb-3">
-						<h1 class="h3 d-inline align-middle">Profile</h1>
-						<a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
-      Get more page examples
-  </a>
-					</div>
-					<div class="row">
-						<div class="col-md-4 col-xl-3">
-							<div class="card mb-3">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Profile Details</h5>
-								</div>
-								<div class="card-body text-center">
-									<img src="{{asset('backend/img/avatars/avatar.jpg') }}" alt="{{ucwords(auth()->user()->name)}}" class="img-fluid rounded-circle mb-2" width="128" height="128" />
-									<h5 class="card-title mb-0">{{ucwords(auth()->user()->name)}}</h5>
-									<div class="text-muted mb-2">Admin</div>
+    <div class="mb-3">
+        <h1 class="h3 d-inline align-middle">Edit Profile</h1>
+    </div>
 
-									<div>
-										<a class="btn btn-primary btn-sm" href="#">Follow</a>
-										<a class="btn btn-primary btn-sm" href="#"><span data-feather="message-square"></span> Message</a>
-									</div>
-								</div>
-								<hr class="my-0" />
-								<div class="card-body">
-									<h5 class="h6 card-title">Skills</h5>
-									<a href="#" class="badge bg-primary me-1 my-1">HTML</a>
-									<a href="#" class="badge bg-primary me-1 my-1">JavaScript</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Sass</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Angular</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Vue</a>
-									<a href="#" class="badge bg-primary me-1 my-1">React</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Redux</a>
-									<a href="#" class="badge bg-primary me-1 my-1">UI</a>
-									<a href="#" class="badge bg-primary me-1 my-1">UX</a>
-								</div>
-								<hr class="my-0" />
-								<div class="card-body">
-									<h5 class="h6 card-title">About</h5>
-									<ul class="list-unstyled mb-0">
-										<li class="mb-1"><span data-feather="home" class="feather-sm me-1"></span> Lives in <a href="#">San Francisco, SA</a></li>
+    <div class="row">
+        <!-- Left Sidebar: Profile Summary (Only Saved DB Image Here) -->
+        <div class="col-md-5 col-xl-4">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Profile Overview</h5>
+                </div>
+                <div class="card-body text-center">
+                    <!-- Saved DB Image (preview script ekhane ar render hobe na) -->
+                    <img src="{{ getProfileImage() }}"
+                        alt="{{ ucwords(auth()->user()->name) }}"
+                        class="img-fluid rounded-circle mb-2"
+                        width="128"
+                        height="128"
+                        style="object-fit: cover;" />
 
-										<li class="mb-1"><span data-feather="briefcase" class="feather-sm me-1"></span> Works at <a href="#">GitHub</a></li>
-										<li class="mb-1"><span data-feather="map-pin" class="feather-sm me-1"></span> From <a href="#">Boston</a></li>
-									</ul>
-								</div>
-								<hr class="my-0" />
-								<div class="card-body">
-									<h5 class="h6 card-title">Elsewhere</h5>
-									<ul class="list-unstyled mb-0">
-										<li class="mb-1"><a href="#">staciehall.co</a></li>
-										<li class="mb-1"><a href="#">Twitter</a></li>
-										<li class="mb-1"><a href="#">Facebook</a></li>
-										<li class="mb-1"><a href="#">Instagram</a></li>
-										<li class="mb-1"><a href="#">LinkedIn</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+                    <h5 class="card-title mb-0">{{ ucwords(auth()->user()->name) }}</h5>
+                    <div class="text-muted mb-2">@ {{ auth()->user()->username ?? 'admin' }}</div>
+                    <span class="badge bg-primary">Admin</span>
+                </div>
 
-						<div class="col-md-8 col-xl-9">
-							<div class="card">
-								<div class="card-header">
+                <hr class="my-0" />
 
-									<h5 class="card-title mb-0">Activities</h5>
-								</div>
-								<div class="card-body h-100">
+                <div class="card-body">
+                    <h5 class="h6 card-title">Contact Info</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1"><span data-feather="mail" class="feather-sm me-1"></span> {{ auth()->user()->email }}</li>
+                        <li class="mb-1"><span data-feather="phone" class="feather-sm me-1"></span> {{ auth()->user()->phone }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-									<div class="d-flex align-items-start">
-										<img src="{{ asset('backend/img/avatars/avatar-5.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="Vanessa Tucker">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">5m ago</small>
-											<strong>Vanessa Tucker</strong> started following <strong>Christina Mason</strong><br />
-											<small class="text-muted">Today 7:51 pm</small><br />
+        <!-- Right Side: Forms Container -->
+        <div class="col-md-7 col-xl-8">
 
-										</div>
-									</div>
+            <!-- Card 1: Profile Information -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Update Profile Details</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('patch')
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}">
+                                @error('name')
+                                <span class="text-danger small">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="{{asset('backend/img/avatars/avatar-3.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">30m ago</small>
-											<strong>Charles Hall</strong> posted something on <strong>Christina Mason</strong>'s timeline<br />
-											<small class="text-muted">Today 7:21 pm</small>
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ auth()->user()->username }}" required>
+                            </div>
+                        </div>
 
-											<div class="border text-sm text-muted p-2 mt-1">
-												Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
-												pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
-											</div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ auth()->user()->email }}" readonly>
+                            </div>
 
-											<a href="#" class="btn btn-sm btn-danger mt-1"><i class="feather-sm" data-feather="heart"></i> Like</a>
-										</div>
-									</div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ auth()->user()->phone }}">
+                            </div>
+                        </div>
 
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="{{ asset('backend/img/avatars/avatar-4.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1h ago</small>
-											<strong>Christina Mason</strong> posted a new blog<br />
+                        <div class="mb-3">
+                            <label for="image" class="form-label fw-semibold text-dark">Profile Image</label>
 
-											<small class="text-muted">Today 6:35 pm</small>
-										</div>
-									</div>
+                            <div class="d-flex align-items-center gap-3">
+                                <!-- Avatar Preview Thumbnail (Targeted by jQuery script) -->
+                                <div class="position-relative">
+                                    <img id="showImage"
+                                        src="{{ getProfileImage() }}"
+                                        alt="Profile Preview"
+                                        class="rounded-circle img-thumbnail shadow-sm style-profile-preview"
+                                        style="width: 72px; height: 72px; object-fit: cover; border: 2px solid #e9ecef;">
+                                </div>
 
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="{{ asset('backend/img/avatars/avatar-2.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">3h ago</small>
-											<strong>William Harris</strong> posted two photos on <strong>Christina Mason</strong>'s timeline<br />
-											<small class="text-muted">Today 5:12 pm</small>
+                                <!-- Custom Styled File Input -->
+                                <div class="flex-grow-1">
+                                    <input class="form-control form-control-md border-1 shadow-none custom-file-input"
+                                        type="file"
+                                        id="image"
+                                        name="photo"
+                                        accept="image/*">
+                                    <div class="form-text text-muted mt-1" style="font-size: 0.8rem;">
+                                        Allowed formats: JPG, PNG, WEBP. (Max: 2MB)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-											<div class="row g-0 mt-1">
-												<div class="col-6 col-md-4 col-lg-4 col-xl-3">
-													<img src="{{ asset('backend/img/photos/unsplash-1.jpg') }}" class="img-fluid pe-2" alt="Unsplash">
-												</div>
-												<div class="col-6 col-md-4 col-lg-4 col-xl-3">
-													<img src="{{ asset('backend/img/photos/unsplash-2.jpg') }}" class="img-fluid pe-2" alt="Unsplash">
-												</div>
-											</div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Password Manager -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Change Password</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ ('admin.password.update') }}" method="POST">
+                    @csrf
 
-											<a href="#" class="btn btn-sm btn-danger mt-1"><i class="feather-sm" data-feather="heart"></i> Like</a>
-										</div>
-									</div>
+                    <div class="mb-3">
+                        <label for="old_password" class="form-label">Current Password</label>
+                        <input type="password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" name="old_password" placeholder="Enter current password">
+                        @error('old_password')
+                        <span class="text-danger small">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="{{ asset('backend/img/avatars/avatar-2.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1d ago</small>
-											<strong>William Harris</strong> started following <strong>Christina Mason</strong><br />
-											<small class="text-muted">Yesterday 3:12 pm</small>
+                    <div class="mb-3">
+                        <label for="new_password" class="form-label">New Password</label>
+                        <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" placeholder="Enter new password">
+                        @error('new_password')
+                        <span class="text-danger small">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-											<div class="d-flex align-items-start mt-1">
-												<a class="pe-3" href="#">
-                <img src="{{ asset('backend/img/avatars/avatar-4.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
-              </a>
-												<div class="flex-grow-1">
-													<div class="border text-sm text-muted p-2 mt-1">
-														Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+                    <div class="mb-3">
+                        <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" placeholder="Confirm new password">
+                    </div>
 
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="{{ asset('backend/img/avatars/avatar-4.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1d ago</small>
-											<strong>Christina Mason</strong> posted a new blog<br />
-											<small class="text-muted">Yesterday 2:43 pm</small>
-										</div>
-									</div>
+                    <button type="submit" class="btn btn-primary">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="{{asset('backend/img/avatars/avatar.jpg') }}" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1d ago</small>
-											<strong>Charles Hall</strong> started following <strong>Christina Mason</strong><br />
-											<small class="text-muted">Yesterdag 1:51 pm</small>
-										</div>
-									</div>
+</div>
 
-									<hr />
-									<div class="d-grid">
-										<a href="#" class="btn btn-primary">Load more</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
+<!-- Live Image Preview Script -->
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                // Focused live preview strictly on input's adjacent image block
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+    });
+</script>
+@endpush
 @endsection

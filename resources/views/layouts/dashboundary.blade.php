@@ -42,7 +42,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.profile') }}">
+                        <a class="sidebar-link" href="{{ route('admin.profile.show') }}">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                         </a>
                     </li>
@@ -119,7 +119,7 @@
         </nav>
 
         <div class="main">
-            
+
             <nav class="navbar navbar-expand navbar-light navbar-bg">
                 <a class="sidebar-toggle js-sidebar-toggle">
                     <i class="hamburger align-self-center"></i>
@@ -268,7 +268,7 @@
                                 <img src="{{ asset('backend/img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">{{ ucwords(auth()->user()->name) }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                                <a class="dropdown-item" href="{{ route('admin.profile.show') }}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
@@ -543,6 +543,7 @@
             });
         });
     </script>
+    @stack('scripts')
 
 </body>
 

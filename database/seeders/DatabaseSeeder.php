@@ -26,16 +26,19 @@ class DatabaseSeeder extends Seeder
         $users = [
             [
             'name' => 'Admin',
+            'username' => 'admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('adminPass')
         ],
             [
             'name' => 'foyjur rafee',
+            'username' => 'foyjur.rafee.99',
             'email' => 'foyjurrafee99@gmail.com',
             'password' => Hash::make('password')
         ],
             [
             'name' => 'faisal shourab',
+            'username' => 'faisal.shourab',
             'email' => 'shourab.cit.bd@gmail.com',
             'password' => Hash::make('password')
         ]
