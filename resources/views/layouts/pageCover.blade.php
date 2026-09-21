@@ -24,35 +24,7 @@
     </div>
     <!-- ----------------------------------------------------------------------- -->
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                                 pop up                                  -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <div class="container">
-                <div class="row">
-                    <span id="close"><iconify-icon icon="ix:cancel" width="24" height="24"></iconify-icon></span>
-                    <div class="col-lg-5 col-12">
-                        <img src="{{ asset('frontend/images/BG.png') }}" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-lg-7 col-12">
-                        <div class="popright">
-                            <h3>Subscribe to Our <br class="d-lg-block d-none"> Newsletter</h3>
-                            <p>Subscribe to our newlletter and Save your <span>20% <br> money</span> with discount code today.</p>
-                            <div class="subs">
-                                <input type="text" name="" id="" placeholder="Enter your email">
-                                <button>Subscribe</button>
-                            </div>
-                            <div class="checkbox_wrapper">
-                                <input type="checkbox" name="" id="never_appear">
-                                <label for="never_appear">Do not show this window</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ----------------------------------------------------------------------- -->
+    
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Header                                  -->
@@ -120,37 +92,19 @@
                     <div class="col-lg-8">
                         <ul class="d-flex">
                             <li>
-                                <a href="./index.html">Home</a>
+                                <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="./shop.html">Shop <iconify-icon icon="oui:arrow-down" width="14" height="14"></iconify-icon></a>
-                                <ul class="home">
-                                    <li>
-                                        <a href="./shop.html">Categories</a>
-                                        <ul class="homeCat">
-                                            <li><a href="./shop.html">Vegetables</a></li>
-                                            <li><a href="./shop.html">Fruits</a></li>
-                                            <li><a href="./shop.html">Grains</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./signIn.html">Wishlist</a></li>
-                                    <li><a href="./cart.html">Shopping Cart</a></li>
-                                    <li><a href="./index.html#home_new">Blog</a></li>
-                                </ul>
+                                <a href="{{ route('shop') }}">Shop</a>
                             </li>
                             <li>
-                                <a href="./index.html#home_new">Blog <iconify-icon icon="oui:arrow-down" width="14" height="14"></iconify-icon></a>
-                                <ul class="blogg">
-                                    <li><a href="./index.html#home_new">Single blog</a></li>
-                                    <li><a href="./index.html#home_new">Double blog</a></li>
-                                    <li><a href="./index.html#home_new">Tripple blog</a></li>
-                                </ul>
+                                <a href="{{ route('blog') }}">Blog</a>
                             </li>
                             <li>
-                                <a href="./index.html#otherService">About Us</a>
+                                <a href="{{ route('about') }}">About Us</a>
                             </li>
                             <li>
-                                <a href="./index.html#home_newsletter">Contact Us</a>
+                                <a href="{{ route('contact') }}">Contact Us</a>
                             </li>
                         </ul>
                     </div>
@@ -169,7 +123,7 @@
                         </button>
                     </div>
                     <div class="col-6 text-center">
-                        <a href="./index.html"><img src="{{ asset('frontend/images/Logo.png') }}" class="img-fluid" alt=""></a>
+                        <a href="{{ route('home') }}"><img src="{{ asset('frontend/images/Logo.png') }}" class="img-fluid" alt=""></a>
                     </div>
                     <div class="col">
                         <div class="links col-lg-3 text-end">

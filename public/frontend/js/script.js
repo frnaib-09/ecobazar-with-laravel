@@ -309,3 +309,34 @@ $("#get-started").countdown("2026/09/23", function(event) {
       closeBtn.addEventListener("click", popupOpener);
     }
 
+
+    const minRange = document.getElementById('minRange');
+    const maxRange = document.getElementById('maxRange');
+
+    const minValue = document.getElementById('minValue');
+    const maxValue = document.getElementById('maxValue');
+
+    const sliderTrack = document.querySelector('.slider-track');
+
+  function updateSlider() {
+      let min = parseInt(minRange.value);
+      let max = parseInt(maxRange.value);
+      // Prevent min from going above max
+      if (min > max) {
+          minRange.value = max;
+          min = max;
+      }
+      // Prevent max from going below min
+      if (max < min) {
+          maxRange.value = min;
+          max = min;
+      }
+      minValue.textContent = min;
+      maxValue.textContent = max;
+      const minPercent = (min / 10000) * 100;
+      const maxPercent = (max / 10000) * 100;
+      sliderTrack.style.background = `linear-gradient(to right, #d3d3d3 ${minPercent}%, var(--branding-success) ${minPercent}%, var(--branding-success) ${maxPercent}%, #d3d3d3 ${maxPercent}%)`;
+  }
+  minRange.addEventListener('input', updateSlider);
+  maxRange.addEventListener('input', updateSlider);
+  updateSlider();

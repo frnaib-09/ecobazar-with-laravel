@@ -3,6 +3,36 @@
 Home
 @endsection
 @section('content')
+<!-- ----------------------------------------------------------------------- -->
+    <!--                                 pop up                                  -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="container">
+                <div class="row">
+                    <span id="close"><iconify-icon icon="ix:cancel" width="24" height="24"></iconify-icon></span>
+                    <div class="col-lg-5 col-12">
+                        <img src="{{ asset('frontend/images/BG.png') }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-lg-7 col-12">
+                        <div class="popright">
+                            <h3>Subscribe to Our <br class="d-lg-block d-none"> Newsletter</h3>
+                            <p>Subscribe to our newlletter and Save your <span>20% <br> money</span> with discount code today.</p>
+                            <div class="subs">
+                                <input type="text" name="" id="" placeholder="Enter your email">
+                                <button>Subscribe</button>
+                            </div>
+                            <div class="checkbox_wrapper">
+                                <input type="checkbox" name="" id="never_appear">
+                                <label for="never_appear">Do not show this window</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+
     <!-- ----------------------------------------------------------------------- -->
     <!--                             Banner Section                              -->
     <section id="banner">
