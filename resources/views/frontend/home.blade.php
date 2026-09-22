@@ -687,7 +687,7 @@ Home
                    <img src="{{ asset('frontend/images/Line.png') }}" alt="">
                </div>
                <div class="col-lg-2 col-md-4 text-md-end">
-                   <a href="#">View All <iconify-icon icon="solar:arrow-right-outline"></iconify-icon></a>
+                   <a href="{{ route('shop') }}">View All <iconify-icon icon="solar:arrow-right-outline"></iconify-icon></a>
                </div>
            </div>
            <div class="row">

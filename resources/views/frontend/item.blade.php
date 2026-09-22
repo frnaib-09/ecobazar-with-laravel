@@ -2,6 +2,7 @@
 @section('title')
 Item Details
 @endsection
+@section('content')
     
     <!-- ----------------------------------------------------------------------- -->
     <!--                         Product Details Seciton                         -->
@@ -362,3 +363,5 @@ Item Details
             </div>
     </section>
     <!-- ----------------------------------------------------------------------- -->
+
+@endsection

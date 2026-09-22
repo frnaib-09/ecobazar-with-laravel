@@ -1676,6 +1676,9 @@ footer .footer_social_links ul li:hover a{
 
 /* -------------------------------------------------------------------------- */
 /*                               Heading Section                              */
+#heading {
+    margin-top: 210px;
+}
 #heading .ankors {
     gap: 14px;
     padding: 24px 0;
@@ -1698,7 +1701,7 @@ footer .footer_social_links ul li:hover a{
 /*                              top data section                              */
 #topData {
     max-width: 1320px;
-    margin: 180px auto 40px;
+    margin: 32px auto 40px;
     background-image: url(../images/Discount\ Bannar.png);
     background-position: center;
     background-repeat: no-repeat;

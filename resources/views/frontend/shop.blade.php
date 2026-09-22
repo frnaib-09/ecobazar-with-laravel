@@ -10,12 +10,11 @@ Shop
     <div class="container">
         <div class="col-lg-12 col-12 d-flex">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadCrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><iconify-icon
+                <ol class="breadcrumb align-items-center">
+                    <li class="breadcrumb-item"><a class="nav-link" href="{{ route('home') }}"><iconify-icon
                                 icon="material-symbols-light:home-outline" width="24"
                                 height="24"></iconify-icon></a></li>
-                    <li class="breadcrumb-item" aria-current="page">Categories</li>
-                    <li class="breadcrumb-item on" aria-current="page">Vegetable</li>
+                    <li class="breadcrumb-item" aria-current="page">Shop</li>
                 </ol>
             </nav>
         </div>
