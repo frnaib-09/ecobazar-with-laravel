@@ -3001,3 +3001,42 @@ tbody tr td .btnCart {
     font-size: 14px;
     font-weight: 500;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                 About Page                                 */
+.ab_heading {
+    background-image: url(../images/Breadcrumbs.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: linear-gradient(90.02deg, rgba(0, 0, 0, 0.7) 0.03%, rgba(0, 0, 0, 0) 91.31%);
+    min-height: 120px;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ab_1 { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    gap: 58px;
+
+
+    h1 {
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 120%;
+    color: var(--gray-scale-gray-â€“-900);
+    margin-bottom: 32px;
+    }
+    p {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+        color: var(--gray-scale-gray-â€“-600);
+    }
+}
+/* -------------------------------------------------------------------------- */
