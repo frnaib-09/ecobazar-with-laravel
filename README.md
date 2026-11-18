@@ -33,10 +33,6 @@ npm install && npm run build
 php artisan serve
 ```
 
-## Screenshots
-
-_Add screenshots of the storefront and admin dashboard here._
-
 ---
 
 Built by [Foyjur Rafee](https://github.com/frnaib-09) · Available for Laravel and full-stack projects — foyjurrafee99@gmail.com
